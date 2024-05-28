@@ -1,7 +1,8 @@
 <br />
 <p align="center">
 
-  <img src="" alt="Logo" width="300" height="">
+  <img src="https://github.com/devzery/devzery-go-gorilla-mux/assets/86240862/5081cc82-7389-401e-99f3-fd440ce630ad" alt="Logo" width="300" height="">
+
 
 
   <h3 align="center">Devzery Go SDK</h3>
