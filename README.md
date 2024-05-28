@@ -43,4 +43,7 @@ Paste the following code in your router
 		r.Use(mw.LoggingMiddleware)
 	}
 ```
+"YOUR_SOURCE_NAME" should be the name of the service which is hitting our API_ENDPOINT
+<br/>
+<br/>
 You can now send requests to your APIs and Devzery will take care of testing on them. Yes it is that simple!
