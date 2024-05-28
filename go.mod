@@ -1,5 +1,3 @@
-module sdk
+module github.com/devzery/devzery-go-gorilla-mux
 
 go 1.22.3
-
-require github.com/gorilla/mux v1.8.1 // indirect
