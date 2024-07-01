@@ -35,7 +35,7 @@ Paste the following code in your router
 ```go
 	func main(){
 	    r := mux.NewRouter() //Here replace 'r' with your router name
-		mw := loggingMiddleware.NewMiddleware(
+		mw := loggingMiddleware.create(
 			"API_ENDPOINT",
 			"YOUR_ACCESS_TOKEN",
 			"YOUR_SOURCE_NAME",
