@@ -12,18 +12,18 @@ import (
 type Middleware struct {
 	APIEndpoint string
 	APIKey      string
-	SourceName  string
+	ServerName  string
 }
 
 type contextKey string
 
 const ErrorKey contextKey = "ErrorKey"
 
-func NewMiddleware(apiEndpoint, apiKey, sourceName string) *Middleware {
+func create(apiEndpoint, apiKey, serverName string) *Middleware {
 	return &Middleware{
 		APIEndpoint: apiEndpoint,
 		APIKey:      apiKey,
-		SourceName:  sourceName,
+		ServerName:  serverName,
 	}
 }
 
@@ -104,7 +104,7 @@ func (m *Middleware) LoggingMiddleware(next http.Handler) http.Handler {
 
 func (m *Middleware) sendDataToAPI(data map[string]interface{}) {
 	go func() {
-		if m.APIKey != "" && m.SourceName != "" {
+		if m.APIKey != "" && m.ServerName != "" {
 			jsonData, err := json.Marshal(data)
 			if err != nil {
 				log.Printf("Error marshalling data: %v", err)
@@ -118,7 +118,7 @@ func (m *Middleware) sendDataToAPI(data map[string]interface{}) {
 			}
 			req.Header.Set("Content-Type", "application/json")
 			req.Header.Set("x-access-token", m.APIKey)
-			req.Header.Set("source-name", m.SourceName)
+			req.Header.Set("source-name", m.ServerName)
 
 			client := &http.Client{}
 			resp, err := client.Do(req)
@@ -137,8 +137,8 @@ func (m *Middleware) sendDataToAPI(data map[string]interface{}) {
 			if m.APIKey == "" {
 				log.Println("Devzery: No API Key")
 			}
-			if m.SourceName == "" {
-				log.Println("Devzery: No Source Name")
+			if m.ServerName == "" {
+				log.Println("Devzery: No Server Name")
 			}
 		}
 	}()
